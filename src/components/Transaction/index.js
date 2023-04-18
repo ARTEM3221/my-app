@@ -1,7 +1,7 @@
-const Transaction = (props) => (
+const Transaction = ({transaction}) => (
     <div>
-          Label: {props.transactions.label}
-          <p>Value: {props.transactions.value}</p>
+          Label: {transaction.label}
+          <p>Value: {transaction.value}</p>
           <br/>
     </div>
 );
