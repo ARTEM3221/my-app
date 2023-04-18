@@ -1,5 +1,5 @@
 import { Component } from 'react';
-
+import PropTypes from 'prop-types';
 
 class Form extends Component {
     constructor() {
@@ -25,7 +25,7 @@ class Form extends Component {
     
     render () {
         return (
-        <form omSubmit={this.onSubmit}>
+        <form onSubmit={this.onSubmit}>
             <input name="balance" type="number" placeholder="Sum"
             value={this.state.value}
             onChange={this.onChange}></input>

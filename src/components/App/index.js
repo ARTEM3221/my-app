@@ -29,12 +29,12 @@ class App extends React.Component{
 
     render(){
       return (
-        <div>
+        <>
           <Balance balance={this.state.balance}/>
           <Form onChange={this.onChange}/>
           <hr/>
           <Transactions transactions={this.state.transactions}/>
-        </div>
+        </>
         )
       }
     }
