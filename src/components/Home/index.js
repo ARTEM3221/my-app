@@ -3,6 +3,7 @@ import React from 'react';
 import Balance from '../Balance';
 import Transactions from '../Transactions';
 import Form from '../Form';
+import ErrorBoundary from '../ErrorBoundary';
 
 import {Wrapper} from './styles.js';
 
@@ -32,12 +33,14 @@ class Home extends React.Component{
 
     render(){
       return (
+        <ErrorBoundary>
         <Wrapper>
           <Balance balance={this.state.balance}/>
           <Form onChange={this.onChange}/>
           <hr/>
           <Transactions transactions={this.state.transactions}/>
         </Wrapper>
+        </ErrorBoundary>
         )
       }
     }
