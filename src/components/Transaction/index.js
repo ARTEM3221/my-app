@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
 
-import {Wrapper} from './styles.js'
+import {Wrapper, TransactionDate, Value, Comment} from './styles.js'
 
 
-const Transaction = ({transaction: {value, label}}) => (
+const Transaction = ({transaction: {value, date, comment}}) => (
     <Wrapper value= {value}>
-          Label: {label}
-          <p>Value: {value}</p>
-          <br/>
+          <TransactionDate>{date}</TransactionDate>
+          <Value>{value.toFixed(2)}</Value>
+          <Comment>{comment}</Comment>
     </Wrapper>
 );
 

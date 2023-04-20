@@ -6,8 +6,9 @@ import Form from '../Form';
 import ErrorBoundary from '../ErrorBoundary';
 
 import {Wrapper} from './styles.js';
+import { getItems, addItem } from '../../utils/indexdb';
 
-let id = 0;
+
 
 class Home extends React.Component{
     constructor(){
@@ -22,13 +23,34 @@ class Home extends React.Component{
         console.log('constructor')
     }
 
+    componentDidMount() {
+      getItems().then((transactions) => {
+          this.setState({
+              transactions
+          })
+      }).catch((e) => {
+         
+      })
+  }
 
-    onChange = (value) => {
+
+    onChange = ({value, date, comment}) => {
+      const transaction = {
+          value: +value, 
+          comment,
+          date,
+          id: Date.now()
+      }
       this.setState((state) => ({
-        balance: state.balance + Number(value),
-        transactions: [{value, label: 'change', id: ++id}, ...state.transactions]
-      }))
-    }
+          balance: state.balance + Number(value),
+          transactions: [
+              transaction,
+          ...state.transactions]
+      }));
+
+      addItem(transaction)
+
+  }
     
 
     render(){
