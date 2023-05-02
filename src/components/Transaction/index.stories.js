@@ -1,21 +1,19 @@
-import  Transaction  from '.';
 import React from 'react';
+
+import Transaction from '.';
+
 export default {
-  title: 'Example/Transaction',
+  title: 'Example/Transation',
   component: Transaction,
-  // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/react/writing-docs/autodocs
-  tags: ['autodocs'],
-  parameters: {
-    // More on how to position stories at: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'fullscreen',
-  },
 };
 
-export const Income = {
-  args: {
-   transaction: {
-    label: 'some income',
-    value: 23
-   }
-  },
+const Template = (args) => <Transaction {...args} />;
+
+export const Income = Template.bind({});
+Income.args = {
+    transaction: {
+        comment: 'some income',
+        value: 23,
+        date: '13.02.2021'
+    }
 };

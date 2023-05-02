@@ -1,21 +1,30 @@
-import { userEvent } from '@storybook/testing-library';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef, useCallback} from 'react';
 
 const Counter = () => {
     const [clicks, setClicks] = useState(0);
     const [step, setStep] = useState(1);
 
+    const currentValue = useRef(0);
+
     const showValue = () => {
-        setTimeout (() => {
-            alert(clicks);
+        console.log(currentValue);
+
+        debugger
+        setTimeout(() => {
+            alert(currentValue.current);
         }, 3000)
-    }
+    };
 
     useEffect(() => {
-        console.log('render', clicks);
-        document.title = `Component renderes. Clicked ${clicks} times`;
-    }, [clicks])
+        console.log('render: ', clicks, step);
+        document.title = `Component rendered. Clicked ${clicks} times`;
 
+        setStep((prevValue) => prevValue + 1);
+    }, [clicks, setStep]);
+
+    useEffect(() => {
+        console.log('Step: ', step);
+    }, [step])
 
     return (
         <div>
@@ -24,8 +33,7 @@ const Counter = () => {
             <br/>
             <button onClick={showValue}>Show value</button>
             <br/>
-            <input type="number" name="step" value={step} 
-            onChange={(e) => setStep(+e.target.value)}/>
+            <input ref={currentValue} name="step" value={step} onChange={(e) => setStep(+e.target.value)}/>
         </div>
     )
 };

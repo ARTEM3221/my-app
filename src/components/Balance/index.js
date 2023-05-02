@@ -1,7 +1,7 @@
-const Balance = ({balance}) => {
+const Balance = ({ balance }) => {
     return (
         <div>
-            Balance: {balance}
+            Поточний баланс: {balance}
         </div>
     )
 }

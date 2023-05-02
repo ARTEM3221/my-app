@@ -10,6 +10,4 @@ export default {
 const Template = (args) => <Counter {...args} />;
 
 export const Income = Template.bind({});
-Income.args = {
-  
-};
+Income.args = {};

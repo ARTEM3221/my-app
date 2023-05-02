@@ -6,10 +6,12 @@ export const Nav = styled.nav`
         display: flex;
         list-style: none;
         padding: 0 5px;
+
         li {
             margin-right: 25px;
         }
     }
+
 `;
 
 Nav.displayName = 'Nav';

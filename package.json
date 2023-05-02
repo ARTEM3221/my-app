@@ -1,41 +1,32 @@
 {
-  "name": "my-app",
+  "name": "budget",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "prop-types": "^15.8.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.10.0",
-    "react-scripts": "5.0.1",
-    "styled-components": "^5.3.9",
-    "web-vitals": "^2.1.4"
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/react-hooks": "^5.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.2",
+    "styled-components": "^5.2.1",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ],
-    "overrides": [
-      {
-        "files": [
-          "**/*.stories.*"
-        ],
-        "rules": {
-          "import/no-anonymous-default-export": "off"
-        }
-      }
     ]
   },
   "browserslist": {
@@ -51,17 +42,37 @@
     ]
   },
   "devDependencies": {
-    "@storybook/addon-essentials": "7.0.6",
-    "@storybook/addon-interactions": "7.0.6",
-    "@storybook/addon-links": "7.0.6",
-    "@storybook/blocks": "7.0.6",
-    "@storybook/preset-create-react-app": "7.0.6",
-    "@storybook/react": "7.0.6",
-    "@storybook/react-webpack5": "7.0.6",
-    "@storybook/testing-library": "0.0.14-next.2",
-    "babel-plugin-named-exports-order": "0.0.2",
-    "jest": "^27.5.1",
-    "storybook": "7.0.6",
-    "webpack": "5.80.0"
+    "@storybook/addon-actions": "^6.1.17",
+    "@storybook/addon-essentials": "^6.1.17",
+    "@storybook/addon-links": "^6.1.17",
+    "@storybook/node-logger": "^6.1.17",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.17",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.4.1",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6",
+    "enzyme-to-json": "^3.6.1"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.{js,jsx,ts,tsx}",
+      "!src/**/*.stories.{js,jsx,ts,tsx}",
+      "!src/index.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    },
+    "coverageReporters": [
+      "text",
+      "html"
+    ]
   }
 }
